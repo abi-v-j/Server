@@ -1,22 +1,32 @@
-import express from 'express'
-import cors from 'cors'
+import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
-import { connect } from 'mongoose';
-import adminRoutes from './routes/admin.routes.js'
+import mongoose from 'mongoose';
+import adminRoutes from './routes/admin.routes.js';
+import logger from './utils/logger.js';
 
 dotenv.config();
-const PORT = process.env.PORT
-const app = express()
-app.use(cors())
-app.use(express.json({ extended: false }))
 
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.use("/admin", adminRoutes)
+// Middleware
+app.use(cors());
+app.use(express.json());
 
+// Routes
+app.use("/admin", adminRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`)
-    connect(process.env.MONGODB_URL).then(() => {
-        console.log('DB Connected');
+// Database Connection and Server Start
+mongoose.connect(process.env.MONGODB_URL)
+    .then(() => {
+        logger.info('Database connected successfully');
+        app.listen(PORT, () => {
+            logger.info(`Server is running on port ${PORT}`);
+        });
     })
-})
+    .catch(error => {
+        logger.error('Database connection failed:', error);
+    });
+
+export default app;
