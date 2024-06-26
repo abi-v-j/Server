@@ -7,6 +7,7 @@ import logger from './utils/logger.js';
 import path from 'path'; // Node.js path module
 import { fileURLToPath } from 'url'; // Node.js URL module
 
+import fs from 'fs';
 
 
 dotenv.config();
@@ -28,6 +29,9 @@ app.use(express.static(publicDirectoryPath));
 
 // Routes
 app.use("/admin", adminRoutes);
+
+
+// Error handling middleware
 
 // Database Connection and Server Start
 mongoose.connect(process.env.MONGODB_URL)
