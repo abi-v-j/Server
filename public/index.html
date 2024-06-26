@@ -74,6 +74,23 @@
         font-weight: bold;
         color: #4caf50;
       }
+      #baseUrl {
+            padding: 10px;
+            background-color: #e7f2ff;
+            border: 1px solid #b3d4fc;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #baseUrl:hover {
+            background-color: #d0e5ff;
+        }
+        #copyMessage {
+            display: none;
+            color: #4caf50;
+            margin-left: 10px;
+        }
     </style>
   </head>
 
@@ -81,7 +98,10 @@
     <h1>Admin API Documentation</h1>
 
     <h2>Base URL</h2>
-    <p><code>https://shoppify-seven.vercel.app/admin</code></p>
+    <p>Click to copy:</p>
+
+    <div id="baseUrl">https://your-api-base-url.com/admin</div>
+    <span id="copyMessage">Copied!</span>
 
     <h2>Districts</h2>
 
@@ -468,4 +488,17 @@
       proper authentication and authorization before deploying to production.
     </p>
   </body>
+  <script>
+    const baseUrl = document.getElementById('baseUrl');
+    const copyMessage = document.getElementById('copyMessage');
+
+    baseUrl.addEventListener('click', () => {
+        navigator.clipboard.writeText(baseUrl.textContent).then(() => {
+            copyMessage.style.display = 'inline';
+            setTimeout(() => {
+                copyMessage.style.display = 'none';
+            }, 2000);
+        });
+    });
+</script>
 </html>
