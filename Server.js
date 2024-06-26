@@ -25,7 +25,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Serve static files from the 'public' directory
 const publicDirectoryPath = path.join(__dirname, 'public');
-app.use(express.static(publicDirectoryPath));
+// app.use(express.static(publicDirectoryPath));
 
 // Routes
 app.use("/admin", adminRoutes);
