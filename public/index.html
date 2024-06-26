@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin API Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .endpoint {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .method {
+            font-weight: bold;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .get { background-color: #61affe; }
+        .post { background-color: #49cc90; }
+        .put { background-color: #fca130; }
+        .delete { background-color: #f93e3e; }
+        .url {
+            color: #3b4151;
+            font-family: monospace;
+            font-size: 16px;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .response-code {
+            font-weight: bold;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin API Documentation</h1>
+
+    <h2>Base URL</h2>
+    <p><code>http://your-api-base-url.com/admin</code></p>
+
+    <h2>Districts</h2>
+
+    <div class="endpoint">
+        <h3>Add District</h3>
+        <p><span class="method post">POST</span> <span class="url">/district</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "name": "District Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">201 Created</span></h4>
+        <pre><code>{
+  "_id": "district_id",
+  "name": "District Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Get All Districts</h3>
+        <p><span class="method get">GET</span> <span class="url">/district</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>[
+  {
+    "_id": "district_id",
+    "name": "District Name",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  },
+  ...
+]</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Update District</h3>
+        <p><span class="method put">PUT</span> <span class="url">/district/:id</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "name": "Updated District Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "_id": "district_id",
+  "name": "Updated District Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Delete District</h3>
+        <p><span class="method delete">DELETE</span> <span class="url">/district/:id</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "message": "District deleted successfully"
+}</code></pre>
+    </div>
+
+    <h2>Admins</h2>
+
+    <div class="endpoint">
+        <h3>Add Admin</h3>
+        <p><span class="method post">POST</span> <span class="url">/admin</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "adminId": 123,
+  "adminName": "Admin Name",
+  "adminEmail": "admin@example.com",
+  "adminPassword": "password"
+}</code></pre>
+        <h4>Response: <span class="response-code">201 Created</span></h4>
+        <pre><code>{
+  "_id": "admin_id",
+  "adminId": 123,
+  "adminName": "Admin Name",
+  "adminEmail": "admin@example.com",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Get All Admins</h3>
+        <p><span class="method get">GET</span> <span class="url">/admin</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>[
+  {
+    "_id": "admin_id",
+    "adminId": 123,
+    "adminName": "Admin Name",
+    "adminEmail": "admin@example.com",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  },
+  ...
+]</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Update Admin</h3>
+        <p><span class="method put">PUT</span> <span class="url">/admin/:id</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "adminName": "Updated Admin Name",
+  "adminEmail": "updated@example.com"
+}</code></pre>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "_id": "admin_id",
+  "adminId": 123,
+  "adminName": "Updated Admin Name",
+  "adminEmail": "updated@example.com",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Delete Admin</h3>
+        <p><span class="method delete">DELETE</span> <span class="url">/admin/:id</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "message": "Admin deleted successfully"
+}</code></pre>
+    </div>
+
+    <h2>Categories</h2>
+
+    <div class="endpoint">
+        <h3>Add Category</h3>
+        <p><span class="method post">POST</span> <span class="url">/category</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "categoryId": 1,
+  "categoryName": "Category Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">201 Created</span></h4>
+        <pre><code>{
+  "_id": "category_id",
+  "categoryId": 1,
+  "categoryName": "Category Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Get All Categories</h3>
+        <p><span class="method get">GET</span> <span class="url">/category</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>[
+  {
+    "_id": "category_id",
+    "categoryId": 1,
+    "categoryName": "Category Name",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  },
+  ...
+]</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Update Category</h3>
+        <p><span class="method put">PUT</span> <span class="url">/category/:id</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "categoryName": "Updated Category Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "_id": "category_id",
+  "categoryId": 1,
+  "categoryName": "Updated Category Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Delete Category</h3>
+        <p><span class="method delete">DELETE</span> <span class="url">/category/:id</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "message": "Category deleted successfully"
+}</code></pre>
+    </div>
+
+    <h2>Subcategories</h2>
+
+    <div class="endpoint">
+        <h3>Add Subcategory</h3>
+        <p><span class="method post">POST</span> <span class="url">/subcategory</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "subcategoryId": 1,
+  "subcategoryName": "Subcategory Name",
+  "categoryId": "parent_category_id"
+}</code></pre>
+        <h4>Response: <span class="response-code">201 Created</span></h4>
+        <pre><code>{
+  "_id": "subcategory_id",
+  "subcategoryId": 1,
+  "subcategoryName": "Subcategory Name",
+  "categoryId": "parent_category_id",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Get All Subcategories</h3>
+        <p><span class="method get">GET</span> <span class="url">/subcategory</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>[
+  {
+    "_id": "subcategory_id",
+    "subcategoryId": 1,
+    "subcategoryName": "Subcategory Name",
+    "categoryId": "parent_category_id",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  },
+  ...
+]</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Update Subcategory</h3>
+        <p><span class="method put">PUT</span> <span class="url">/subcategory/:id</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "subcategoryName": "Updated Subcategory Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "_id": "subcategory_id",
+  "subcategoryId": 1,
+  "subcategoryName": "Updated Subcategory Name",
+  "categoryId": "parent_category_id",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Delete Subcategory</h3>
+        <p><span class="method delete">DELETE</span> <span class="url">/subcategory/:id</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "message": "Subcategory deleted successfully"
+}</code></pre>
+    </div>
+
+    <h2>Places</h2>
+
+    <div class="endpoint">
+        <h3>Add Place</h3>
+        <p><span class="method post">POST</span> <span class="url">/place</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "placeId": 1,
+  "placeName": "Place Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">201 Created</span></h4>
+        <pre><code>{
+  "_id": "place_id",
+  "placeId": 1,
+  "placeName": "Place Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Get All Places</h3>
+        <p><span class="method get">GET</span> <span class="url">/place</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>[
+  {
+    "_id": "place_id",
+    "placeId": 1,
+    "placeName": "Place Name",
+    "createdAt": "timestamp",
+    "updatedAt": "timestamp"
+  },
+  ...
+]</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Update Place</h3>
+        <p><span class="method put">PUT</span> <span class="url">/place/:id</span></p>
+        <h4>Request Body:</h4>
+        <pre><code>{
+  "placeName": "Updated Place Name"
+}</code></pre>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "_id": "place_id",
+  "placeId": 1,
+  "placeName": "Updated Place Name",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp"
+}</code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h3>Delete Place</h3>
+        <p><span class="method delete">DELETE</span> <span class="url">/place/:id</span></p>
+        <h4>Response: <span class="response-code">200 OK</span></h4>
+        <pre><code>{
+  "message": "Place deleted successfully"
+}</code></pre>
+    </div>
+
+    <h2>Error Responses</h2>
+    <p>In case of errors, the API will return a JSON object with a "message" field describing the error:</p>
+    <pre><code>{
+  "message": "Error description"
+}</code></pre>
+    <p>Common HTTP status codes:</p>
+    <ul>
+        <li><strong>400 Bad Request</strong>: Invalid input data</li>
+        <li><strong>404 Not Found</strong>: Resource not found</li>
+        <li><strong>500 Internal Server Error</strong>: Unexpected server error</li>
+    </ul>
+
+    <h2>Authentication</h2>
+    <p>This API currently does not require authentication. Ensure to implement proper authentication and authorization before deploying to production.</p>
+
+    </body>
+</html>
